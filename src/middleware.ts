@@ -32,7 +32,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
     pathname.startsWith("/admin") ||
     pathname.startsWith("/api") ||
     pathname.includes(".") || // static files (css, js, images) usually have extensions
-    pathname === "/maintenance"
+    pathname.startsWith("/maintenance")
   ) {
     return next();
   }
