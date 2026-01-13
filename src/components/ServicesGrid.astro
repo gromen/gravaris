@@ -1,0 +1,59 @@
+---
+const services = [
+  {
+    title: "Wykopy stawów",
+    desc: "Nowe zbiorniki, powiększanie, pogłębianie",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Excavator digging
+  },
+  {
+    title: "Odmulanie stawów",
+    desc: "Czyszczenie zbiorników z namułu",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Machine near water
+  },
+  {
+    title: "Kompleksowe roboty ziemne",
+    desc: "Niwelacje, wykopy, nasypy",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Construction site
+  },
+  {
+    title: "Umacnianie skarp",
+    desc: "Gabiony, umocnienia",
+    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Stones/Gabions
+  }
+];
+---
+
+<section class="py-16 bg-dark">
+  <div class="container-custom">
+    <!-- Section Header -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-white mb-4">Specjalizujemy się w <span class="text-primary">trudnych robotach</span></h2>
+      <p class="text-gray-400 max-w-3xl mx-auto">
+        Jesteśmy firmą specjalizującą się w wykopach stawów, odmulaniu zbiorników oraz kompleksowych robotach ziemnych. 
+        Pracujemy na profesjonalnym sprzęcie long reach, co pozwala nam realizować zlecenia tam, gdzie inni nie mogą.
+      </p>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {services.map(service => (
+        <div class="group relative overflow-hidden bg-dark-card border border-white/10 hover:border-primary transition-colors duration-300">
+           <!-- Image -->
+           <div class="h-48 overflow-hidden">
+             <img src={service.image} alt={service.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+           </div>
+           
+           <!-- Content -->
+           <div class="p-6 text-center">
+             <h3 class="text-xl font-bold text-white mb-2">{service.title}</h3>
+             <div class="h-1 w-12 bg-primary mx-auto mb-3"></div>
+             <p class="text-sm text-gray-400">{service.desc}</p>
+           </div>
+           
+           <!-- Bottom border accent -->
+           <div class="absolute bottom-0 left-0 w-full h-1 bg-transparent group-hover:bg-primary transition-colors"></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

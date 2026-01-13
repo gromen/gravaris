@@ -1,0 +1,19 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "projects"
+    label: "Realizacje"
+    folder: "src/content/projects"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Tytuł", name: "title", widget: "string" }
+      - { label: "Opis", name: "description", widget: "text" }
+      - { label: "Zdjęcie główne", name: "image", widget: "image" }
+      - { label: "Data realizacji", name: "date", widget: "datetime" }
+      - { label: "Treść", name: "body", widget: "markdown" }
