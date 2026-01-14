@@ -1,0 +1,27 @@
+---
+import { getCollection, render } from "astro:content";
+import ProjectDetails from "../../components/ProjectDetails.astro";
+import Layout from "../../layouts/Layout.astro";
+
+const { slug } = Astro.params;
+
+const projects = await getCollection("projects");
+const project = projects.find((p) => p.id === slug);
+
+if (!project) {
+  return Astro.redirect("/404");
+}
+
+const { Content } = await render(project);
+---
+
+<Layout
+  title={`${project.data.title} | Gravaris`}
+  description={project.data.description}
+>
+  <main>
+    <ProjectDetails project={project}>
+      <Content />
+    </ProjectDetails>
+  </main>
+</Layout>

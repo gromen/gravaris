@@ -6,11 +6,12 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://gravaris.pl",
+  site: "https://gravaris.netlify.app",
   adapter: netlify({
     edgeMiddleware: true,
   }),
-  integrations: [tailwindcss(), sitemap()],
+  output: "server",
+  integrations: [sitemap()],
   image: {
     service: {
       entrypoint: "astro/assets/services/sharp",

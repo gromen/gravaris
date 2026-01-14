@@ -4,9 +4,391 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Content Manager</title>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   </head>
   <body>
     <!-- Include the script that builds the page and powers Netlify CMS -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    <!-- Polish locale -->
+    <script>
+      CMS.registerLocale("pl", {
+        app: {
+          header: {
+            content: "Treści",
+            workflow: "Proces publikacji",
+            media: "Media",
+            quickAdd: "Szybkie dodawanie",
+          },
+          app: {
+            errorHeader: "Błąd ładowania konfiguracji CMS",
+            configErrors: "Błędy konfiguracji",
+            checkConfigYml: "Sprawdź plik config.yml.",
+            loadingConfig: "Ładowanie konfiguracji...",
+            waitingBackend: "Oczekiwanie na backend...",
+          },
+          notFoundPage: {
+            header: "Nie znaleziono",
+          },
+        },
+        collection: {
+          sidebar: {
+            collections: "Kolekcje",
+            allCollections: "Wszystkie kolekcje",
+            searchAll: "Szukaj wszystkich",
+            searchIn: "Szukaj w",
+          },
+          collectionTop: {
+            sortBy: "Sortuj według",
+            viewAs: "Widok jako",
+            newButton: "Dodaj %{collectionLabel}",
+            ascending: "Rosnąco",
+            descending: "Malejąco",
+            searchResults: 'Wyniki wyszukiwania dla "%{searchTerm}"',
+            searchResultsInCollection:
+              'Wyniki wyszukiwania dla "%{searchTerm}" w %{collection}',
+            filterBy: "Filtruj według",
+            groupBy: "Grupuj według",
+          },
+          entries: {
+            loadingEntries: "Ładowanie wpisów...",
+            cachingEntries: "Buforowanie wpisów...",
+            longerLoading: "To może potrwać kilka minut",
+            noEntries: "Brak wpisów",
+          },
+          groups: {
+            other: "Inne",
+            negateLabel: "Nie %{label}",
+          },
+          table: {
+            summary: "Podsumowanie",
+            collection: "Kolekcja",
+          },
+          defaultFields: {
+            author: {
+              label: "Autor",
+            },
+            updatedOn: {
+              label: "Zaktualizowano",
+            },
+          },
+          notFound: "Nie znaleziono kolekcji",
+        },
+        editor: {
+          editorControl: {
+            field: {
+              optional: "opcjonalne",
+            },
+          },
+          editorControlPane: {
+            widget: {
+              required: "%{fieldLabel} jest wymagane.",
+              regexPattern: "%{fieldLabel} nie pasuje do wzorca: %{pattern}.",
+              processing: "%{fieldLabel} jest przetwarzane.",
+              range: "%{fieldLabel} musi być między %{minValue} a %{maxValue}.",
+              min: "%{fieldLabel} musi być co najmniej %{minValue}.",
+              max: "%{fieldLabel} musi być %{maxValue} lub mniej.",
+              rangeCount:
+                "%{fieldLabel} musi mieć od %{minCount} do %{maxCount} elementów.",
+              rangeCountExact:
+                "%{fieldLabel} musi mieć dokładnie %{count} elementów.",
+              rangeMin:
+                "%{fieldLabel} musi mieć co najmniej %{minCount} elementów.",
+              rangeMax:
+                "%{fieldLabel} musi mieć %{maxCount} lub mniej elementów.",
+              invalidPath: "'%{path}' nie jest prawidłową ścieżką",
+              pathExists: "Ścieżka '%{path}' już istnieje",
+              invalidColor: "Kolor %{color} jest nieprawidłowy.",
+              invalidHexCode: "Kody szesnastkowe muszą zaczynać się od #.",
+            },
+            i18n: {
+              writingInLocale: "Pisanie w języku %{locale}",
+              copyFromLocale: "Wypełnij z innego języka",
+              copyFromLocaleConfirm:
+                "Czy chcesz wypełnić dane z języka %{locale}?\nCała istniejąca zawartość zostanie nadpisana.",
+            },
+          },
+          editorInterface: {
+            sideBySideI18n: "I18n obok siebie",
+            preview: "Podgląd",
+            toggleI18n: "Przełącz i18n",
+            togglePreview: "Przełącz podgląd",
+            toggleScrollSync: "Synchronizuj przewijanie",
+          },
+          editorToolbar: {
+            publishing: "Publikowanie...",
+            publish: "Opublikuj",
+            published: "Opublikowano",
+            unpublish: "Cofnij publikację",
+            duplicate: "Duplikuj",
+            unpublishing: "Cofanie publikacji...",
+            publishAndCreateNew: "Opublikuj i utwórz nowy",
+            publishAndDuplicate: "Opublikuj i duplikuj",
+            deleteUnpublishedChanges: "Usuń nieopublikowane zmiany",
+            deleteUnpublishedEntry: "Usuń nieopublikowany wpis",
+            deletePublishedEntry: "Usuń opublikowany wpis",
+            deleteEntry: "Usuń wpis",
+            saving: "Zapisywanie...",
+            save: "Zapisz",
+            statusInfoTooltipDraft:
+              'Status wpisu ustawiony jako szkic. Aby zakończyć i przesłać do przeglądu, ustaw status na "Oczekuje na przegląd"',
+            statusInfoTooltipInReview:
+              "Wpis jest w trakcie przeglądu, dalsze zmiany nie są wymagane. Możesz jednak wprowadzić dodatkowe zmiany, gdy wpis jest w przeglądzie.",
+            deleting: "Usuwanie...",
+            updating: "Aktualizowanie...",
+            status: "Status: %{status}",
+            backCollection: "Pisanie w kolekcji %{collectionLabel}",
+            unsavedChanges: "Niezapisane zmiany",
+            changesSaved: "Zmiany zapisane",
+            draft: "Szkic",
+            inReview: "W przeglądzie",
+            ready: "Gotowe",
+            publishNow: "Opublikuj teraz",
+            deployPreviewPendingButtonLabel: "Sprawdź podgląd",
+            deployPreviewButtonLabel: "Zobacz podgląd",
+            deployButtonLabel: "Zobacz na żywo",
+            discardChanges: "Odrzuć zmiany",
+            discardChangesTitle: "Odrzuć zmiany",
+            discardChangesBody:
+              "Czy na pewno chcesz odrzucić niezapisane zmiany?",
+          },
+          editorWidgets: {
+            markdown: {
+              bold: "Pogrubienie",
+              italic: "Kursywa",
+              strikethrough: "Przekreślenie",
+              code: "Kod",
+              codeBlock: "Blok kodu",
+              insertCodeBlock: "Wstaw blok kodu",
+              link: "Link",
+              insertLink: "Wstaw link",
+              paragraph: "Akapit",
+              headings: "Nagłówki",
+              quote: "Cytat",
+              insertQuote: "Wstaw cytat",
+              bulletedList: "Lista punktowana",
+              numberedList: "Lista numerowana",
+              addComponent: "Dodaj komponent",
+              richText: "Tekst sformatowany",
+              markdown: "Markdown",
+              type: "Typ...",
+            },
+            image: {
+              choose: "Wybierz obraz",
+              chooseMultiple: "Wybierz obrazy",
+              chooseUrl: "Wstaw z URL",
+              replaceUrl: "Zastąp przez URL",
+              promptUrl: "Wprowadź URL obrazu",
+              chooseDifferent: "Wybierz inny obraz",
+              addMore: "Dodaj więcej obrazów",
+              remove: "Usuń obraz",
+              removeAll: "Usuń wszystkie obrazy",
+            },
+            file: {
+              choose: "Wybierz plik",
+              chooseUrl: "Wstaw z URL",
+              chooseMultiple: "Wybierz pliki",
+              replaceUrl: "Zastąp przez URL",
+              promptUrl: "Wprowadź URL pliku",
+              chooseDifferent: "Wybierz inny plik",
+              addMore: "Dodaj więcej plików",
+              remove: "Usuń plik",
+              removeAll: "Usuń wszystkie pliki",
+            },
+            folder: {
+              choose: "Wybierz folder",
+              chooseUrl: "Wstaw ścieżkę folderu",
+              chooseMultiple: "Wybierz foldery",
+              replaceUrl: "Zastąp przez ścieżkę",
+              promptUrl: "Wprowadź ścieżkę folderu",
+              chooseDifferent: "Wybierz inny folder",
+              addMore: "Dodaj więcej folderów",
+              remove: "Usuń folder",
+              removeAll: "Usuń wszystkie foldery",
+            },
+            unknownControl: {
+              noControl: "Brak kontrolki dla widżetu '%{widget}'.",
+            },
+            unknownPreview: {
+              noPreview: "Brak podglądu dla widżetu '%{widget}'.",
+            },
+            headingOptions: {
+              headingOne: "Nagłówek 1",
+              headingTwo: "Nagłówek 2",
+              headingThree: "Nagłówek 3",
+              headingFour: "Nagłówek 4",
+              headingFive: "Nagłówek 5",
+              headingSix: "Nagłówek 6",
+            },
+            datetime: {
+              now: "Teraz",
+              invalidDateTitle: "Nieprawidłowa data",
+              invalidDateBody: "Wprowadzona data jest nieprawidłowa.",
+            },
+            list: {
+              add: "Dodaj %{item}",
+              addType: "Dodaj %{item}",
+              noValue: "Brak wartości",
+            },
+            keyvalue: {
+              key: "Klucz",
+              value: "Wartość",
+              uniqueKeys: "%{keyLabel} musi być unikalny",
+            },
+            code: {
+              language: "Język",
+              selectLanguage: "Wybierz język",
+            },
+            object: {
+              collapseAll: "Zwiń wszystko",
+              expandAll: "Rozwiń wszystko",
+              collapseAllShortcut: "Ctrl+Click aby zwinąć wszystko",
+              expandAllShortcut: "Ctrl+Click aby rozwinąć wszystko",
+            },
+            select: {
+              selectOption: "Wybierz %{fieldLabel}",
+            },
+          },
+        },
+        mediaLibrary: {
+          mediaLibraryCard: {
+            draft: "Szkic",
+            copy: "Kopiuj",
+            copyUrl: "Kopiuj URL",
+            copyPath: "Kopiuj ścieżkę",
+            copyName: "Kopiuj nazwę",
+            copied: "Skopiowano",
+          },
+          mediaLibrary: {
+            onDeleteTitle: "Usunąć wybrany plik?",
+            onDeleteBody: "Czy na pewno chcesz usunąć wybrany plik?",
+            fileTooLargeTitle: "Plik za duży",
+            fileTooLargeBody:
+              "Plik jest za duży.\nSkonfigurowano, aby nie zezwalać na pliki większe niż %{size} kB.",
+            alreadyExistsTitle: "Plik już istnieje",
+            alreadyExistsBody:
+              "%{filename} już istnieje. Czy chcesz go zastąpić?",
+          },
+          mediaLibraryModal: {
+            noResults: "Brak wyników.",
+            noAssetsFound: "Nie znaleziono zasobów.",
+            noImagesFound: "Nie znaleziono obrazów.",
+            private: "Prywatny",
+            images: "Obrazy",
+            mediaAssets: "Zasoby multimedialne",
+            search: "Szukaj...",
+            uploading: "Przesyłanie...",
+            upload: "Prześlij",
+            download: "Pobierz",
+            deleting: "Usuwanie...",
+            deleteSelected: "Usuń zaznaczone",
+            chooseSelected: "Wybierz zaznaczone",
+            dropImages: "Upuść obrazy do przesłania",
+            dropFiles: "Upuść pliki do przesłania",
+          },
+          folderSupport: {
+            newFolder: "Nowy folder",
+            createNewFolder: "Utwórz nowy folder",
+            enterFolderName: "Wprowadź nazwę folderu...",
+            create: "Utwórz",
+            home: "Strona główna",
+            up: "W górę",
+            upToFolder: "W górę do %{folder}",
+          },
+        },
+        ui: {
+          common: {
+            yes: "Tak",
+            no: "Nie",
+            okay: "OK",
+            cancel: "Anuluj",
+          },
+          default: {
+            goBackToSite: "Wróć do strony",
+          },
+          localBackup: {
+            hasLocalBackup: "Ma lokalną kopię zapasową",
+          },
+          errorBoundary: {
+            title: "Błąd",
+            details: "Wystąpił błąd - proszę ",
+            reportIt: "zgłoś to.",
+            detailsHeading: "Szczegóły",
+            privacyWarning:
+              "Otwarcie zgłoszenia wypełnia je wiadomością o błędzie i danymi debugowania.\nSprawdź czy informacje są poprawne i usuń wrażliwe dane jeśli istnieją.",
+            recoveredEntry: {
+              heading: "Odzyskany dokument",
+              warning:
+                "Proszę skopiuj/wklej to gdzieś zanim opuścisz tę stronę!",
+              copyButtonLabel: "Skopiuj do schowka",
+            },
+          },
+          settingsDropdown: {
+            theme: "Motyw",
+            logOut: "Wyloguj się",
+          },
+          toast: {
+            onFailToLoadEntries: "Nie udało się załadować wpisu: %{details}",
+            onFailToLoadDeployPreview:
+              "Nie udało się załadować podglądu: %{details}",
+            onFailToPersist: "Nie udało się zapisać wpisu: %{details}",
+            onFailToPersistMedia: "Nie udało się zapisać mediów: %{details}",
+            onFailToDelete: "Nie udało się usunąć wpisu: %{details}",
+            onFailToDeleteMedia: "Nie udało się usunąć mediów: %{details}",
+            onFailToUpdateStatus:
+              "Nie udało się zaktualizować statusu: %{details}",
+            missingRequiredField:
+              "Ups, przegapiłeś wymagane pole. Wypełnij przed zapisaniem.",
+            entrySaved: "Wpis zapisany",
+            entryPublished: "Wpis opublikowany",
+            entryUnpublished: "Publikacja wpisu cofnięta",
+            onFailToPublishEntry: "Nie udało się opublikować: %{details}",
+            onFailToUnpublishEntry:
+              "Nie udało się cofnąć publikacji wpisu: %{details}",
+            entryUpdated: "Status wpisu zaktualizowany",
+            onDeleteUnpublishedChanges: "Nieopublikowane zmiany usunięte",
+            onFailToAuth: "%{details}",
+            onLoggedOut:
+              "Wylogowano, proszę wykonaj kopię danych i zaloguj się ponownie",
+            onBackendDown:
+              "Backend ma problemy. Zobacz %{details} po więcej informacji",
+          },
+        },
+        workflow: {
+          workflow: {
+            dashboard: "Panel",
+            loading: "Ładowanie wpisów",
+            workflowHeading: "Proces publikacji",
+            newPost: "Nowy wpis",
+            description:
+              "%{smart_count} wpis oczekuje na przegląd, %{readyCount} gotowych do publikacji. |||| %{smart_count} wpisów oczekuje na przegląd, %{readyCount} gotowych do publikacji.",
+            dateFormat: "MMMM D",
+          },
+          workflowCard: {
+            lastChange: "%{date} przez %{author}",
+            lastChangeNoAuthor: "%{date}",
+            lastChangeNoDate: "przez %{author}",
+            deleteChanges: "Usuń zmiany",
+            deleteNewEntry: "Usuń nowy wpis",
+            publishChanges: "Opublikuj zmiany",
+            publishNewEntry: "Opublikuj nowy wpis",
+          },
+          workflowList: {
+            onDeleteEntry: "Czy na pewno chcesz usunąć ten wpis?",
+            onPublishingNotReadyEntry:
+              'Tylko elementy o statusie "Gotowe" mogą być opublikowane. Przeciągnij kartę do kolumny "Gotowe" aby umożliwić publikację.',
+            onPublishEntry: "Czy na pewno chcesz opublikować ten wpis?",
+            draft: "Szkice",
+            pending_review: "W przeglądzie",
+            pending_publish: "Gotowe",
+            currentEntries: "%{smart_count} wpis |||| %{smart_count} wpisów",
+          },
+          openAuthoring: {
+            forkRequired: "Otwarte tworzenie",
+            forkRepo: "Fork repozytorium",
+            markReadyForReview: "Oznacz jako gotowe do przeglądu",
+          },
+        },
+      });
+    </script>
   </body>
 </html>

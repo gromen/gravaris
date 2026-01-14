@@ -2,18 +2,47 @@ backend:
   name: git-gateway
   branch: main
 
+locale: "pl"
+
 media_folder: "public/images/uploads"
 public_folder: "/images/uploads"
 
 collections:
   - name: "projects"
     label: "Realizacje"
+    label_singular: "Realizacja"
     folder: "src/content/projects"
+    media_folder: "public/images/projects"
+    public_folder: "/images/projects"
+    preview_path: "projekty/{{slug}}"
     create: true
+    delete: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} - {{date | date('DD.MM.YYYY')}}"
+    description: "Zarządzaj realizacjami projektów"
     fields:
-      - { label: "Tytuł", name: "title", widget: "string" }
-      - { label: "Opis", name: "description", widget: "text" }
-      - { label: "Zdjęcie główne", name: "image", widget: "image" }
-      - { label: "Data realizacji", name: "date", widget: "datetime" }
-      - { label: "Treść", name: "body", widget: "markdown" }
+      - label: "Tytuł"
+        name: "title"
+        widget: "string"
+        hint: "Nazwa projektu/realizacji"
+      - label: "Opis"
+        name: "description"
+        widget: "text"
+        hint: "Krótki opis projektu (1-2 zdania)"
+      - label: "Zdjęcie główne"
+        name: "image"
+        widget: "image"
+        hint: "Zdjęcie wyświetlane jako miniatura"
+        media_library:
+          config:
+            max_file_size: 5242880
+      - label: "Data realizacji"
+        name: "date"
+        widget: "datetime"
+        date_format: "DD.MM.YYYY"
+        time_format: false
+        hint: "Data zakończenia projektu"
+      - label: "Treść"
+        name: "body"
+        widget: "markdown"
+        hint: "Szczegółowy opis realizacji"

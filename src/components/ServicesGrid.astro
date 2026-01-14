@@ -1,24 +1,29 @@
 ---
+import odmulanie from "@assets/images/odmulanie-stawow.png";
+import robotyZiemne from "@assets/images/roboty-ziemne.png";
+import umacnianieSkarp from "@assets/images/umacnianie-skarp.png";
+import excavator from "@assets/images/wykopy-stawow.png";
+
 const services = [
   {
     title: "Wykopy stawów",
     desc: "Nowe zbiorniki, powiększanie, pogłębianie",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Excavator digging
+    image: excavator
   },
   {
     title: "Odmulanie stawów",
     desc: "Czyszczenie zbiorników z namułu",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Machine near water
+    image: odmulanie
   },
   {
     title: "Kompleksowe roboty ziemne",
     desc: "Niwelacje, wykopy, nasypy",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Construction site
+    image: robotyZiemne
   },
   {
     title: "Umacnianie skarp",
     desc: "Gabiony, umocnienia",
-    image: "https://images.unsplash.com/photo-1589939705384-5185137a7f0f?q=80&w=1920&auto=format&fit=crop" // Placeholder: Stones/Gabions
+    image: umacnianieSkarp
   }
 ];
 ---
@@ -40,7 +45,7 @@ const services = [
         <div class="group relative overflow-hidden bg-dark-card border border-white/10 hover:border-primary transition-colors duration-300">
            <!-- Image -->
            <div class="h-48 overflow-hidden">
-             <img src={service.image} alt={service.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+             <img src={service.image.src} alt={service.title} height="48" width="48" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
            </div>
            
            <!-- Content -->
