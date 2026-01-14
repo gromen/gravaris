@@ -1,5 +1,6 @@
 ---
 export const prerender = false;
+import { SITE_CONFIG } from "@/config/site";
 import Layout from "../layouts/Layout.astro";
 ---
 
@@ -71,7 +72,7 @@ import Layout from "../layouts/Layout.astro";
               d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
             ></path></svg
           >
-          <span>kontakt@gravaris.pl</span>
+          <span>{SITE_CONFIG.contact.email}</span>
         </div>
       </div>
     </div>

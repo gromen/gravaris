@@ -1,22 +1,30 @@
 ---
+import { SITE_CONFIG } from "../config/site";
 ---
 
-<section class="relative h-[600px] flex items-center justify-center overflow-hidden">
+<section
+  class="relative h-[600px] flex items-center justify-center overflow-hidden"
+>
   <!-- Background Image with Overlay -->
   <div class="absolute inset-0 z-0">
-    <img 
-      src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=2070&auto=format&fit=crop" 
-      alt="Excavator working" 
+    <img
+      src="https://images.unsplash.com/photo-1541625602330-2277a4c46182?q=80&w=2070&auto=format&fit=crop"
+      alt="Excavator working"
       class="w-full h-full object-cover"
     />
-    <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"></div>
+    <div
+      class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent"
+    >
+    </div>
   </div>
 
   <div class="container-custom relative z-10 w-full">
     <div class="max-w-2xl text-white">
-      <h1 class="text-5xl md:text-7xl font-bold mb-2 tracking-tight">GRAVARIS</h1>
+      <h1 class="text-5xl md:text-7xl font-bold mb-2 tracking-tight">
+        GRAVARIS
+      </h1>
       <div class="h-1 w-20 bg-primary mb-6"></div>
-      
+
       <p class="text-3xl md:text-4xl font-light mb-2">
         Wykopy i odmulanie stawów
       </p>
@@ -25,12 +33,17 @@
       </p>
 
       <div class="flex flex-col sm:flex-row gap-4">
-        <div class="bg-primary text-black px-6 py-3 font-bold text-lg rounded flex items-center gap-2">
-            <span>Zadzwoń:</span>
-            <a href="tel:600800902" class="hover:underline">600 800 902</a>
+        <div
+          class="bg-primary text-black px-6 py-3 font-bold text-lg rounded flex items-center gap-2"
+        >
+          <span>Zadzwoń:</span>
+          <a
+            href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
+            class="hover:underline">{SITE_CONFIG.contact.phone}</a
+          >
         </div>
         <div class="flex items-center text-white/80 text-sm px-4">
-            Bezpłatna wycena
+          Bezpłatna wycena
         </div>
       </div>
     </div>
