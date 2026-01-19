@@ -2,8 +2,7 @@
 import { getCollection } from "astro:content";
 
 const projects = (await getCollection("projects"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3); // Show latest 3
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <section class="py-16 bg-dark">
@@ -16,28 +15,106 @@ const projects = (await getCollection("projects"))
       <div class="w-24 h-1 bg-primary rounded-full"></div>
     </div>
 
-    <!-- Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6" id="galeria">
-      {
-        projects.map((project) => (
-          <a
-            href={`/projekty/${project.id}`}
-            class="group relative aspect-video overflow-hidden border border-white/10 hover:border-primary transition-colors block"
-          >
-            <img
-              src={project.data.image}
-              alt={project.data.title}
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
+    <!-- Gallery with arrows -->
+    <div class="relative" id="galeria">
+      <!-- Left Arrow -->
+      <button
+        type="button"
+        class="gallery-arrow gallery-arrow-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-primary hover:bg-accent text-dark rounded-full flex items-center justify-center transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed hidden md:flex"
+        aria-label="Poprzedni projekt"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
 
-            <div class="absolute bottom-0 left-0 right-0 bg-black/80 p-3 transform translate-y-0 text-center border-t border-primary/50">
-              <span class="text-sm font-semibold text-white group-hover:text-primary transition-colors">
-                {project.data.title}
-              </span>
-            </div>
-          </a>
-        ))
-      }
+      <!-- Scrollable Gallery -->
+      <div
+        class="gallery-scroll flex gap-4 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 -mx-4 px-4 md:mx-0 md:px-0"
+      >
+        {
+          projects.map((project) => (
+            <a
+              href={`/projekty/${project.id}`}
+              class="gallery-item group relative aspect-video overflow-hidden border border-white/10 hover:border-primary transition-colors block flex-shrink-0 w-[85%] md:w-[calc((100%-2rem)/3)] snap-start"
+            >
+              <img
+                src={project.data.image}
+                alt={project.data.title}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+
+              <div class="absolute bottom-0 left-0 right-0 bg-black/80 p-3 transform translate-y-0 text-center border-t border-primary/50">
+                <span class="text-sm font-semibold text-white group-hover:text-primary transition-colors">
+                  {project.data.title}
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Right Arrow -->
+      <button
+        type="button"
+        class="gallery-arrow gallery-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-primary hover:bg-accent text-dark rounded-full flex items-center justify-center transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed hidden md:flex"
+        aria-label="Następny projekt"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
     </div>
   </div>
 </section>
+
+<style>
+  .gallery-scroll::-webkit-scrollbar {
+    display: none;
+  }
+  .gallery-scroll {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+<script>
+  function initGallery() {
+    const gallery = document.querySelector('.gallery-scroll') as HTMLElement;
+    const leftArrow = document.querySelector('.gallery-arrow-left') as HTMLButtonElement;
+    const rightArrow = document.querySelector('.gallery-arrow-right') as HTMLButtonElement;
+
+    if (!gallery || !leftArrow || !rightArrow) return;
+
+    const getItemWidth = () => {
+      const item = gallery.querySelector('.gallery-item') as HTMLElement;
+      if (!item) return 0;
+      const gap = 16; // gap-4 = 1rem = 16px
+      return item.offsetWidth + gap;
+    };
+
+    const updateArrows = () => {
+      const isAtStart = gallery.scrollLeft <= 0;
+      const isAtEnd = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1;
+
+      leftArrow.disabled = isAtStart;
+      rightArrow.disabled = isAtEnd;
+    };
+
+    leftArrow.addEventListener('click', () => {
+      gallery.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
+    });
+
+    rightArrow.addEventListener('click', () => {
+      gallery.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
+    });
+
+    gallery.addEventListener('scroll', updateArrows);
+    window.addEventListener('resize', updateArrows);
+
+    updateArrows();
+  }
+
+  document.addEventListener('astro:page-load', initGallery);
+  initGallery();
+</script>

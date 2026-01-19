@@ -1,0 +1,60 @@
+# CLAUDE.md
+
+This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
+
+## Project Overview
+
+Gravaris is a professional services website for an excavation and earth-moving company (Polish market). Built with Astro 5 in SSR mode, deployed on Netlify with Netlify CMS for content management.
+
+## Commands
+
+```bash
+npm run dev      # Start dev server at localhost:4321
+npm run build    # Production build to ./dist/
+npm run preview  # Preview production build locally
+```
+
+## Architecture
+
+### Tech Stack
+- **Framework**: Astro 5.16.9 (server output mode)
+- **Styling**: Tailwind CSS 4 with custom theme
+- **Deployment**: Netlify with edge middleware
+- **CMS**: Netlify CMS for project content
+- **Image Processing**: Sharp
+
+### Key Directories
+- `src/components/` - Astro components (Hero, Header, Footer, ServicesGrid, etc.)
+- `src/config/site.ts` - Centralized site configuration (contact info, services list)
+- `src/content/projects/` - Project markdown files managed by Netlify CMS
+- `src/pages/projekty/[...slug].astro` - Dynamic project detail pages
+- `src/styles/global.css` - Tailwind config with custom color theme
+- `src/middleware.ts` - Maintenance mode redirect logic
+- `public/admin/` - Netlify CMS admin interface and config
+
+### Path Aliases (tsconfig.json)
+Use `@` prefix for imports:
+- `@components/*` → `src/components/*`
+- `@config/*` → `src/config/*`
+- `@assets/*` → `src/assets/*`
+- `@layouts/*` → `src/layouts/*`
+- `@styles/*` → `src/styles/*`
+
+### Content Management
+- Projects are created via `/admin` (Netlify CMS)
+- Content stored as markdown in `src/content/projects/`
+- Schema defined in `src/content.config.ts` using Zod
+- Project images uploaded to `public/images/projects/`
+
+### Design System
+Custom Tailwind theme colors in `global.css`:
+- `--color-primary`: #FFC107 (yellow/gold)
+- `--color-accent`: #E0A800 (darker yellow for hover)
+- `--color-dark`: #0f0f0f (background)
+- `--color-dark-card`: #141414 (card backgrounds)
+
+### Maintenance Mode
+Controlled via `MAINTENANCE_MODE` env variable. Bypass with `?access=true` query param.
+
+## Language
+All UI text is in Polish.
