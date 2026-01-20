@@ -9,14 +9,16 @@ Gravaris is a professional services website for an excavation and earth-moving c
 ## Commands
 
 ```bash
-npm run dev      # Start dev server at localhost:4321
-npm run build    # Production build to ./dist/
-npm run preview  # Preview production build locally
+npm run dev         # Start dev server at localhost:4321
+npm run build       # Production build to ./dist/
+npm run preview     # Preview production build locally
+npm run netlify:dev # Run with Netlify CLI (for testing edge functions/middleware)
 ```
 
 ## Architecture
 
 ### Tech Stack
+
 - **Framework**: Astro 5.16.9 (server output mode)
 - **Styling**: Tailwind CSS 4 with custom theme
 - **Deployment**: Netlify with edge middleware
@@ -24,6 +26,7 @@ npm run preview  # Preview production build locally
 - **Image Processing**: Sharp
 
 ### Key Directories
+
 - `src/components/` - Astro components (Hero, Header, Footer, ServicesGrid, etc.)
 - `src/config/site.ts` - Centralized site configuration (contact info, services list)
 - `src/content/projects/` - Project markdown files managed by Netlify CMS
@@ -33,28 +36,45 @@ npm run preview  # Preview production build locally
 - `public/admin/` - Netlify CMS admin interface and config
 
 ### Path Aliases (tsconfig.json)
+
 Use `@` prefix for imports:
-- `@components/*` → `src/components/*`
-- `@config/*` → `src/config/*`
-- `@assets/*` → `src/assets/*`
-- `@layouts/*` → `src/layouts/*`
-- `@styles/*` → `src/styles/*`
+
+- `@/*` → `src/*` (catch-all)
+- `@components/*`, `@config/*`, `@assets/*`, `@layouts/*`, `@styles/*`
+- `@utils/*`, `@i18n/*`, `@js/*`, `@scripts/*`, `@src-types/*`, `@locales/*`
 
 ### Content Management
+
 - Projects are created via `/admin` (Netlify CMS)
 - Content stored as markdown in `src/content/projects/`
-- Schema defined in `src/content.config.ts` using Zod
-- Project images uploaded to `public/images/projects/`
+- Project file naming: `{{year}}-{{month}}-{{day}}-{{slug}}.md`
+- Schema defined in `src/content.config.ts` using Zod (title, description, image, date)
+- Project images: `public/images/projects/`, general uploads: `public/images/uploads/`
 
 ### Design System
+
 Custom Tailwind theme colors in `global.css`:
+
 - `--color-primary`: #FFC107 (yellow/gold)
 - `--color-accent`: #E0A800 (darker yellow for hover)
 - `--color-dark`: #0f0f0f (background)
 - `--color-dark-card`: #141414 (card backgrounds)
 
 ### Maintenance Mode
+
 Controlled via `MAINTENANCE_MODE` env variable. Bypass with `?access=true` query param.
 
 ## Language
+
+accent`: #E0A800 (darker yellow for hover)
+
+- `--color-dark`: #0f0f0f (background)
+- `--color-dark-card`: #141414 (card backgrounds)
+
+### Maintenance Mode
+
+Controlled via `MAINTENANCE_MODE` env variable. Bypass with `?access=true` query param.
+
+## Language
+
 All UI text is in Polish.
