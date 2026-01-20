@@ -15,7 +15,41 @@ body {
   @apply bg-dark text-text-main font-sans antialiased;
 }
 
+/* Light theme overrides */
+html.light {
+  --color-dark: #ffffff;
+  --color-dark-card: #f5f5f5;
+  --color-text-main: #0f0f0f;
+  --color-text-muted: #525252;
+}
+
 /* Custom Utilities if needed */
 .container-custom {
   @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+}
+
+/* Theme-aware border utilities */
+.border-theme {
+  @apply border-white/10;
+}
+
+html.light .border-theme {
+  @apply border-black/10;
+}
+
+/* Theme-aware background utilities */
+.bg-theme-header {
+  @apply bg-black;
+}
+
+html.light .bg-theme-header {
+  @apply bg-white;
+}
+
+.bg-theme-hover {
+  @apply hover:bg-white/5;
+}
+
+html.light .bg-theme-hover {
+  @apply hover:bg-black/5;
 }

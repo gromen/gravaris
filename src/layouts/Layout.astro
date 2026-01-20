@@ -35,8 +35,18 @@ const {
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
     ></script>
+
+    <!-- Theme init (prevents flash) -->
+    <script is:inline>
+      (function() {
+        const theme = localStorage.getItem('theme');
+        if (theme === 'light') {
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
   </head>
-  <body class="bg-dark text-white min-h-screen flex flex-col">
+  <body class="bg-dark text-text-main min-h-screen flex flex-col">
     <Header />
     <slot />
     <Footer />

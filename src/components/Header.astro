@@ -1,9 +1,10 @@
 ---
 import logo from "@assets/logo.svg";
 import { SITE_CONFIG } from "../config/site";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="bg-black py-4 border-b border-white/10 sticky top-0 z-50">
+<header class="bg-theme-header py-4 border-b border-theme sticky top-0 z-50">
   <div class="container-custom flex justify-between items-center">
     <!-- Logo -->
     <a href="/" class="flex items-center gap-2 group">
@@ -12,7 +13,7 @@ import { SITE_CONFIG } from "../config/site";
       >
         <img src={logo.src} alt="Logo" />
       </div>
-      <span class="text-2xl font-bold tracking-wide text-white">GRAVARIS</span>
+      <span class="text-2xl font-bold tracking-wide text-text-main">GRAVARIS</span>
     </a>
 
     <!-- Desktop Navigation & Contact -->
@@ -20,17 +21,19 @@ import { SITE_CONFIG } from "../config/site";
       <nav class="flex items-center gap-6">
         <a
           href="/projekty"
-          class="text-gray-300 hover:text-primary transition-colors font-medium"
+          class="text-text-muted hover:text-primary transition-colors font-medium"
         >
           Projekty
         </a>
         <a
           href="/kontakt"
-          class="text-gray-300 hover:text-primary transition-colors font-medium"
+          class="text-text-muted hover:text-primary transition-colors font-medium"
         >
           Kontakt
         </a>
       </nav>
+
+      <ThemeToggle />
 
       <div class="flex items-center gap-3">
         <div class="w-8 h-8 flex items-center justify-center text-primary">
@@ -59,13 +62,15 @@ import { SITE_CONFIG } from "../config/site";
     </div>
 
     <!-- Mobile Menu Button -->
-    <button
-      type="button"
-      id="mobile-menu-btn"
-      class="sm:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-white"
-      aria-label="Menu"
-      aria-expanded="false"
-    >
+    <div class="sm:hidden flex items-center gap-2">
+      <ThemeToggle />
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="w-10 h-10 flex flex-col items-center justify-center gap-1.5 text-text-main"
+        aria-label="Menu"
+        aria-expanded="false"
+      >
       <span
         class="hamburger-line w-6 h-0.5 bg-current transition-all duration-300 origin-center"
       ></span>
@@ -76,6 +81,7 @@ import { SITE_CONFIG } from "../config/site";
         class="hamburger-line w-6 h-0.5 bg-current transition-all duration-300 origin-center"
       ></span>
     </button>
+    </div>
   </div>
 
   <!-- Mobile Menu -->
@@ -85,11 +91,11 @@ import { SITE_CONFIG } from "../config/site";
     style="max-height: 0;"
   >
     <nav
-      class="container-custom py-4 flex flex-col gap-2 border-t border-white/10 mt-4"
+      class="container-custom py-4 flex flex-col gap-2 border-t border-theme mt-4"
     >
       <a
         href="/projekty"
-        class="mobile-link py-3 px-4 text-gray-300 hover:text-primary hover:bg-white/5 transition-all font-medium flex items-center gap-3 opacity-0"
+        class="mobile-link py-3 px-4 text-text-muted hover:text-primary bg-theme-hover transition-all font-medium flex items-center gap-3 opacity-0"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -109,7 +115,7 @@ import { SITE_CONFIG } from "../config/site";
       </a>
       <a
         href="/kontakt"
-        class="mobile-link py-3 px-4 text-gray-300 hover:text-primary hover:bg-white/5 transition-all font-medium flex items-center gap-3 opacity-0"
+        class="mobile-link py-3 px-4 text-text-muted hover:text-primary bg-theme-hover transition-all font-medium flex items-center gap-3 opacity-0"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
