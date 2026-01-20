@@ -4,6 +4,7 @@
     "@astrojs/sitemap": "^3.6.1",
     "@tailwindcss/vite": "^4.1.18",
     "astro": "^5.16.9",
+    "resend": "^6.8.0",
     "tailwindcss": "^4.1.18"
   },
   "name": "gravaris",

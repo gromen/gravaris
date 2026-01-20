@@ -78,3 +78,8 @@ Controlled via `MAINTENANCE_MODE` env variable. Bypass with `?access=true` query
 ## Language
 
 All UI text is in Polish.
+
+## Plan Mode
+
+- Make the plan extremely concise. Sacrifice grammar for the sake of concision.
+- At the end of each plan, give me a list of unresolved questions to answer, if any.

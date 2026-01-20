@@ -3,7 +3,7 @@ export const SITE_CONFIG = {
   contact: {
     phone: "600 800 902",
     phoneRaw: "+48600800902",
-    email: "[EMAIL_ADDRESS]",
+    email: "kontakt@gravaris.pl",
   },
   services: ["Wykopy stawów", "Odmulanie", "Roboty ziemne"],
 };
