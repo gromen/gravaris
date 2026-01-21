@@ -6,6 +6,5 @@ export const SITE_CONFIG = {
     email: "kontakt@gravaris.pl",
   },
   services: ["Wykopy stawów", "Odmulanie", "Roboty ziemne"],
-  // Added a new service
   additionalServices: ["Umacnianie skarp", "Projekty rekreacyjne"],
 };
