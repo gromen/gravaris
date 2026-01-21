@@ -1,9 +1,10 @@
 ---
-import { getCollection } from "astro:content";
 import Layout from "@layouts/Layout.astro";
+import { getCollection } from "astro:content";
 
-const projects = (await getCollection("projects"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 
 const formatDate = (date: Date) => {
   return date.toLocaleDateString("pl-PL", {
@@ -19,10 +20,12 @@ const formatDate = (date: Date) => {
 >
   <main class="bg-dark min-h-screen">
     <!-- Hero section -->
-    <section class="py-16 bg-gradient-to-b from-dark-card to-dark">
+    <section class="py-16 bg-linear-to-b from-dark-card to-dark">
       <div class="container-custom">
         <div class="flex flex-col items-center justify-center text-center">
-          <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h1
+            class="text-4xl md:text-5xl font-bold dark:text-white text-secondary mb-4"
+          >
             Nasze <span class="text-primary">Realizacje</span>
           </h1>
           <div class="w-24 h-1 bg-primary rounded-full mb-6"></div>
@@ -37,49 +40,73 @@ const formatDate = (date: Date) => {
     <!-- Projects grid -->
     <section class="py-12 pb-20">
       <div class="container-custom">
-        {projects.length > 0 ? (
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-              <a
-                href={`/projekty/${project.id}`}
-                class="group bg-dark-card border border-white/10 hover:border-primary overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
-              >
-                <div class="aspect-video overflow-hidden">
-                  <img
-                    src={project.data.image}
-                    alt={project.data.title}
-                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                </div>
-                <div class="p-5">
-                  <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                    <span>{formatDate(project.data.date)}</span>
+        {
+          projects.length > 0 ?
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {projects.map((project) => (
+                <a
+                  href={`/projekty/${project.id}`}
+                  class="group bg-dark-card border border-white/10 hover:border-primary overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary/10"
+                >
+                  <div class="aspect-video overflow-hidden">
+                    <img
+                      src={project.data.image}
+                      alt={project.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
                   </div>
-                  <h2 class="text-xl font-semibold text-white group-hover:text-primary transition-colors mb-2">
-                    {project.data.title}
-                  </h2>
-                  <p class="text-gray-400 text-sm line-clamp-2">
-                    {project.data.description}
-                  </p>
-                  <div class="mt-4 flex items-center text-primary text-sm font-medium">
-                    <span>Zobacz szczegóły</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                    </svg>
+                  <div class="p-5">
+                    <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                        />
+                      </svg>
+                      <span>{formatDate(project.data.date)}</span>
+                    </div>
+                    <h2 class="text-xl font-semibold text-secondary dark:text-white group-hover:text-primary transition-colors mb-2">
+                      {project.data.title}
+                    </h2>
+                    <p class="text-gray-400 text-sm line-clamp-2">
+                      {project.data.description}
+                    </p>
+                    <div class="mt-4 flex items-center text-primary text-sm font-medium">
+                      <span>Zobacz szczegóły</span>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        stroke-width="2"
+                      >
+                        <path
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </div>
                   </div>
-                </div>
-              </a>
-            ))}
-          </div>
-        ) : (
-          <div class="text-center py-20">
-            <p class="text-gray-400 text-lg">Brak projektów do wyświetlenia.</p>
-          </div>
-        )}
+                </a>
+              ))}
+            </div>
+          : <div class="text-center py-20">
+              <p class="text-gray-400 text-lg">
+                Brak projektów do wyświetlenia.
+              </p>
+            </div>
+        }
       </div>
     </section>
   </main>
