@@ -1,9 +1,9 @@
 ---
-
 title: Test Project 5
 date: 2023-10-05
 description: This is a test project for Gravaris.
 image: /images/uploads/rogienice-po.jpg
+---
 
 ## Project Overview
 
