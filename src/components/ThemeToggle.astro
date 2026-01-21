@@ -84,14 +84,15 @@ const { class: className = "" } = Astro.props;
     toggles.forEach((toggle) => {
       toggle.addEventListener("click", () => {
         const html = document.documentElement;
-        const isLight = html.classList.contains("light");
 
-        if (isLight) {
-          html.classList.remove("light");
-          localStorage.setItem("theme", "dark");
-        } else {
+        if (html.classList.contains("dark")) {
+          html.classList.remove("dark");
           html.classList.add("light");
           localStorage.setItem("theme", "light");
+        } else {
+          html.classList.add("dark");
+          html.classList.remove("light");
+          localStorage.setItem("theme", "dark");
         }
       });
     });

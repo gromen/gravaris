@@ -38,10 +38,17 @@ const {
 
     <!-- Theme init (prevents flash) -->
     <script is:inline>
-      (function() {
-        const theme = localStorage.getItem('theme');
-        if (theme === 'light') {
-          document.documentElement.classList.add('light');
+      (function () {
+        const theme = localStorage.getItem("theme");
+        const systemDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+
+        if (theme === "dark" || (!theme && systemDark)) {
+          document.documentElement.classList.add("dark");
+        } else {
+          document.documentElement.classList.remove("dark");
+          document.documentElement.classList.add("light"); // Optional specific light class
         }
       })();
     </script>
