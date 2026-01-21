@@ -2,14 +2,7 @@
 title: Test Project 3
 date: 2023-10-03
 description: This is a test project for Gravaris.
-client: Client C
-location: Location Z
-services:
-  - Roboty ziemne
-  - Umacnianie skarp
-images:
-  - /public/images/uploads/mchowo-przed.jpeg
-  - /public/images/uploads/rogienice-po.jpg
+image: /images/uploads/rogienice-po.jpg
 ---
 
 ## Project Overview

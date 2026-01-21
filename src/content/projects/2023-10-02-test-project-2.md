@@ -2,14 +2,7 @@
 title: Test Project 2
 date: 2023-10-02
 description: This is a test project for Gravaris.
-client: Client B
-location: Location Y
-services:
-  - Odmulanie stawów
-  - Wykopy stawów
-images:
-  - /public/images/uploads/mchowo-przed.jpeg
-  - /public/images/uploads/rogienice-po.jpg
+image: /images/uploads/rogienice-po.jpg
 ---
 
 ## Project Overview

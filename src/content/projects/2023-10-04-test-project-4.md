@@ -2,14 +2,7 @@
 title: Test Project 4
 date: 2023-10-04
 description: This is a test project for Gravaris.
-client: Client D
-location: Location W
-services:
-  - Kopanie stawu
-  - Transport materiałów
-images:
-  - /public/images/uploads/mchowo-przed.jpeg
-  - /public/images/uploads/rogienice-po.jpg
+image: /images/uploads/rogienice-po.jpg
 ---
 
 ## Project Overview
