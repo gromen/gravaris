@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://gravaris.netlify.app",
+  site: "https://gravaris.pl",
   adapter: netlify({
     edgeMiddleware: true,
   }),
