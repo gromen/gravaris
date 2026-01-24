@@ -55,6 +55,8 @@ import ThemeToggle from "./ThemeToggle.astro";
         <a
           href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
           class="text-xl font-bold text-primary hover:text-accent transition-colors"
+          data-track="phone"
+          data-location="header"
         >
           {SITE_CONFIG.contact.phone}
         </a>
@@ -136,6 +138,8 @@ import ThemeToggle from "./ThemeToggle.astro";
       <a
         href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
         class="mobile-link py-3 px-4 mt-2 bg-primary hover:bg-accent text-dark font-semibold transition-all flex items-center justify-center gap-2 opacity-0"
+        data-track="phone"
+        data-location="header_mobile"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -248,4 +252,14 @@ import ThemeToggle from "./ThemeToggle.astro";
 
   document.addEventListener("astro:page-load", initMobileMenu);
   initMobileMenu();
+
+  // Analytics tracking
+  document.querySelectorAll('[data-track="phone"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      const location = (el as HTMLElement).dataset.location || "unknown";
+      if (window.gtag) {
+        window.gtag("event", "click_phone", { location });
+      }
+    });
+  });
 </script>

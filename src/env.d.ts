@@ -10,4 +10,6 @@ interface ImportMeta {
 
 interface Window {
   netlifyIdentity: any;
+  gtag: (command: string, ...args: any[]) => void;
+  dataLayer: any[];
 }

@@ -138,6 +138,8 @@ import { SITE_CONFIG } from "@config/site";
                 <a
                   href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
                   class="flex items-start gap-4 group"
+                  data-track="phone"
+                  data-location="contact_section"
                 >
                   <div
                     class="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0"
@@ -170,6 +172,8 @@ import { SITE_CONFIG } from "@config/site";
                 <a
                   href={`mailto:${SITE_CONFIG.contact.email}`}
                   class="flex items-start gap-4 group"
+                  data-track="email"
+                  data-location="contact_section"
                 >
                   <div
                     class="w-12 h-12 bg-primary/10 flex items-center justify-center shrink-0"
@@ -242,6 +246,8 @@ import { SITE_CONFIG } from "@config/site";
               <a
                 href={`tel:${SITE_CONFIG.contact.phoneRaw}`}
                 class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-accent text-dark font-semibold transition-colors"
+                data-track="phone"
+                data-location="contact_cta"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -333,6 +339,10 @@ import { SITE_CONFIG } from "@config/site";
         if (response.ok && data.success) {
           successDiv.classList.remove("hidden");
           form.reset();
+          // Track form submission
+          if (window.gtag) {
+            window.gtag("event", "form_submit", { form_name: "contact" });
+          }
         } else {
           errorDiv.classList.remove("hidden");
           errorMessage.textContent =
@@ -352,4 +362,22 @@ import { SITE_CONFIG } from "@config/site";
 
   document.addEventListener("astro:page-load", initContactForm);
   initContactForm();
+
+  // Analytics tracking for phone/email clicks
+  document.querySelectorAll('[data-track="phone"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      const location = (el as HTMLElement).dataset.location || "unknown";
+      if (window.gtag) {
+        window.gtag("event", "click_phone", { location });
+      }
+    });
+  });
+  document.querySelectorAll('[data-track="email"]').forEach((el) => {
+    el.addEventListener("click", () => {
+      const location = (el as HTMLElement).dataset.location || "unknown";
+      if (window.gtag) {
+        window.gtag("event", "click_email", { location });
+      }
+    });
+  });
 </script>
