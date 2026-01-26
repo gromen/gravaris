@@ -1,15 +1,16 @@
 ---
 import { getCollection } from "astro:content";
 
-const projects = (await getCollection("projects"))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const projects = (await getCollection("projects")).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
+);
 ---
 
 <section class="py-16 bg-dark">
   <div class="container-custom">
     <!-- Header -->
     <div class="flex flex-col items-center justify-center mb-12">
-      <h2 class="text-3xl font-bold text-white mb-2">
+      <h2 class="text-3xl font-bold dark:text-white text-secondary mb-2">
         Galeria <span class="text-primary">Realizacji</span>
       </h2>
       <div class="w-24 h-1 bg-primary rounded-full"></div>
@@ -23,8 +24,18 @@ const projects = (await getCollection("projects"))
         class="gallery-arrow gallery-arrow-left absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 w-10 h-10 bg-primary hover:bg-accent text-dark rounded-full flex items-center justify-center transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed hidden md:flex"
         aria-label="Poprzedni projekt"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M15 19l-7-7 7-7"></path>
         </svg>
       </button>
 
@@ -60,11 +71,19 @@ const projects = (await getCollection("projects"))
       <!-- Right Arrow -->
       <button
         type="button"
-        class="gallery-arrow gallery-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-primary hover:bg-accent text-dark rounded-full flex items-center justify-center transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed hidden md:flex"
+        class="cursor-pointer gallery-arrow gallery-arrow-right absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 w-10 h-10 bg-primary hover:bg-accent text-dark rounded-full flex items-center justify-center transition-colors shadow-lg disabled:opacity-30 disabled:cursor-not-allowed hidden md:flex"
         aria-label="Następny projekt"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2.5"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"
+          ></path>
         </svg>
       </button>
     </div>
@@ -76,8 +95,18 @@ const projects = (await getCollection("projects"))
         class="inline-flex items-center gap-2 px-6 py-3 bg-primary hover:bg-accent text-dark font-semibold transition-colors"
       >
         <span>Zobacz wszystkie realizacje</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="w-5 h-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
         </svg>
       </a>
     </div>
@@ -96,14 +125,18 @@ const projects = (await getCollection("projects"))
 
 <script>
   function initGallery() {
-    const gallery = document.querySelector('.gallery-scroll') as HTMLElement;
-    const leftArrow = document.querySelector('.gallery-arrow-left') as HTMLButtonElement;
-    const rightArrow = document.querySelector('.gallery-arrow-right') as HTMLButtonElement;
+    const gallery = document.querySelector(".gallery-scroll") as HTMLElement;
+    const leftArrow = document.querySelector(
+      ".gallery-arrow-left",
+    ) as HTMLButtonElement;
+    const rightArrow = document.querySelector(
+      ".gallery-arrow-right",
+    ) as HTMLButtonElement;
 
     if (!gallery || !leftArrow || !rightArrow) return;
 
     const getItemWidth = () => {
-      const item = gallery.querySelector('.gallery-item') as HTMLElement;
+      const item = gallery.querySelector(".gallery-item") as HTMLElement;
       if (!item) return 0;
       const gap = 16; // gap-4 = 1rem = 16px
       return item.offsetWidth + gap;
@@ -111,27 +144,28 @@ const projects = (await getCollection("projects"))
 
     const updateArrows = () => {
       const isAtStart = gallery.scrollLeft <= 0;
-      const isAtEnd = gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1;
+      const isAtEnd =
+        gallery.scrollLeft >= gallery.scrollWidth - gallery.clientWidth - 1;
 
       leftArrow.disabled = isAtStart;
       rightArrow.disabled = isAtEnd;
     };
 
-    leftArrow.addEventListener('click', () => {
-      gallery.scrollBy({ left: -getItemWidth(), behavior: 'smooth' });
+    leftArrow.addEventListener("click", () => {
+      gallery.scrollBy({ left: -getItemWidth(), behavior: "smooth" });
     });
 
-    rightArrow.addEventListener('click', () => {
-      gallery.scrollBy({ left: getItemWidth(), behavior: 'smooth' });
+    rightArrow.addEventListener("click", () => {
+      gallery.scrollBy({ left: getItemWidth(), behavior: "smooth" });
     });
 
-    gallery.addEventListener('scroll', updateArrows);
-    window.addEventListener('resize', updateArrows);
+    gallery.addEventListener("scroll", updateArrows);
+    window.addEventListener("resize", updateArrows);
 
     updateArrows();
   }
 
-  document.addEventListener('astro:page-load', initGallery);
+  document.addEventListener("astro:page-load", initGallery);
   initGallery();
 
   // Analytics tracking for project clicks
@@ -140,7 +174,10 @@ const projects = (await getCollection("projects"))
       const projectName = (el as HTMLElement).dataset.projectName || "";
       const projectSlug = (el as HTMLElement).dataset.projectSlug || "";
       if (window.gtag) {
-        window.gtag("event", "click_project", { project_name: projectName, project_slug: projectSlug });
+        window.gtag("event", "click_project", {
+          project_name: projectName,
+          project_slug: projectSlug,
+        });
       }
     });
   });
