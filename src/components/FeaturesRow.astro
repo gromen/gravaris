@@ -41,12 +41,12 @@ const features = [
     >
       {
         features.map((feature) => (
-          <div class="p-4 bg-feature dark:bg-dark-card/50 border border-white/5 rounded hover:border-primary/50 transition-colors group">
+          <article class="p-4 bg-feature dark:bg-dark-card/50 border border-white/5 rounded hover:border-primary/50 transition-colors group">
             <div set:html={feature.icon} />
             <h3 class="text-sm font-semibold text-gray-200 group-hover:text-primary transition-colors leading-tight">
               {feature.title}
             </h3>
-          </div>
+          </article>
         ))
       }
     </div>
