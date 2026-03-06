@@ -1,0 +1,195 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+const images = Array.from({ length: 17 }, (_, i) => ({
+  src: `/images/park-maszyn/maszyna-${String(i + 1).padStart(2, "0")}.jpeg`,
+  alt: `Maszyna ${i + 1}`,
+}));
+---
+
+<Layout
+  title="Park Maszyn | Gravaris - Roboty Ziemne"
+  description="Zobacz nasz park maszynowy. Dysponujemy profesjonalnym sprzętem do robót ziemnych, wykopów i odmulania."
+>
+  <main class="bg-dark min-h-screen">
+    <!-- Hero -->
+    <section class="py-16 bg-linear-to-b from-dark-card to-dark">
+      <div class="container-custom">
+        <div class="flex flex-col items-center justify-center text-center">
+          <h1
+            class="text-4xl md:text-5xl font-bold dark:text-white text-secondary mb-4"
+          >
+            Park <span class="text-primary">Maszyn</span>
+          </h1>
+          <div class="w-24 h-1 bg-primary rounded-full mb-6"></div>
+          <p class="text-gray-400 max-w-2xl text-lg">
+            Dysponujemy profesjonalnym sprzętem do realizacji nawet
+            najtrudniejszych projektów. Poznaj maszyny, na których pracujemy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Gallery -->
+    <section class="py-12 pb-20">
+      <div class="container-custom">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          {
+            images.map((img, index) => (
+              <button
+                type="button"
+                class="gallery-thumb group aspect-video overflow-hidden rounded-lg border border-white/10 hover:border-primary transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+                data-index={index}
+                data-src={img.src}
+                aria-label={`Otwórz zdjęcie - ${img.alt}`}
+              >
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div
+      id="lightbox"
+      class="fixed inset-0 z-50 bg-black/90 hidden items-center justify-center"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Przeglądaj galerię maszyn"
+    >
+      <button
+        type="button"
+        id="lightbox-close"
+        class="absolute top-4 right-4 text-white/70 hover:text-white z-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+        aria-label="Zamknij"
+      >
+        <svg
+          class="w-8 h-8"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+      <button
+        type="button"
+        id="lightbox-prev"
+        class="absolute left-4 text-white/70 hover:text-white z-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+        aria-label="Poprzednie zdjęcie"
+      >
+        <svg
+          class="w-10 h-10"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M15 19l-7-7 7-7"></path>
+        </svg>
+      </button>
+      <button
+        type="button"
+        id="lightbox-next"
+        class="absolute right-4 text-white/70 hover:text-white z-10 cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+        aria-label="Następne zdjęcie"
+      >
+        <svg
+          class="w-10 h-10"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+      <img
+        id="lightbox-img"
+        src=""
+        alt=""
+        class="max-h-[90vh] max-w-[90vw] object-contain"
+      />
+    </div>
+  </main>
+</Layout>
+
+<script>
+  function initLightbox() {
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById(
+      "lightbox-img",
+    ) as HTMLImageElement;
+    const thumbs = document.querySelectorAll(".gallery-thumb");
+    if (!lightbox || !lightboxImg || thumbs.length === 0) return;
+
+    const images = Array.from(thumbs).map(
+      (t) => (t as HTMLElement).dataset.src || "",
+    );
+    let currentIndex = 0;
+    let triggerElement: HTMLElement | null = null;
+
+    function show(index: number) {
+      triggerElement = document.activeElement as HTMLElement;
+      currentIndex = index;
+      lightboxImg.src = images[currentIndex];
+      lightboxImg.alt = `Maszyna ${currentIndex + 1}`;
+      lightbox!.classList.remove("hidden");
+      lightbox!.classList.add("flex");
+      document.getElementById("lightbox-close")?.focus();
+    }
+
+    function hide() {
+      lightbox!.classList.add("hidden");
+      lightbox!.classList.remove("flex");
+      triggerElement?.focus();
+    }
+
+    thumbs.forEach((thumb) => {
+      thumb.addEventListener("click", () => {
+        show(Number((thumb as HTMLElement).dataset.index));
+      });
+    });
+
+    document.getElementById("lightbox-close")?.addEventListener("click", hide);
+    document.getElementById("lightbox-prev")?.addEventListener("click", () => {
+      show((currentIndex - 1 + images.length) % images.length);
+    });
+    document.getElementById("lightbox-next")?.addEventListener("click", () => {
+      show((currentIndex + 1) % images.length);
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) hide();
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (lightbox.classList.contains("hidden")) return;
+      if (e.key === "Escape") hide();
+      if (e.key === "ArrowLeft")
+        show((currentIndex - 1 + images.length) % images.length);
+      if (e.key === "ArrowRight")
+        show((currentIndex + 1) % images.length);
+    });
+  }
+
+  document.addEventListener("astro:page-load", initLightbox);
+  initLightbox();
+</script>

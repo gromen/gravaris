@@ -16,7 +16,7 @@
         "npm:@tailwindcss/vite@^4.1.18",
         "npm:astro@^5.16.9",
         "npm:resend@^6.8.0",
-        "npm:tailwindcss  @^4.1.18"
+        "npm:tailwindcss@^4.1.18"
       ]
     }
   }

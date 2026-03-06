@@ -42,6 +42,18 @@ collections:
         date_format: "DD.MM.YYYY"
         time_format: false
         hint: "Data zakończenia projektu"
+      - label: "Galeria zdjęć"
+        name: "gallery"
+        widget: "list"
+        required: false
+        hint: "Dodaj zdjęcia z realizacji projektu"
+        field:
+          label: "Zdjęcie"
+          name: "image"
+          widget: "image"
+          media_library:
+            config:
+              max_file_size: 5242880
       - label: "Treść"
         name: "body"
         widget: "markdown"
