@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import { resolveProjectImage } from "@/lib/resolve-image";
 
 interface Props {
   project: {
@@ -15,6 +16,7 @@ interface Props {
 }
 
 const { project } = Astro.props;
+const heroImage = resolveProjectImage(project.data.image);
 
 const formattedDate = project.data.date.toLocaleDateString("pl-PL", {
   day: "2-digit",
@@ -49,15 +51,25 @@ const formattedDate = project.data.date.toLocaleDateString("pl-PL", {
     <div
       class="relative aspect-video overflow-hidden rounded-lg mb-8 border border-white/10"
     >
-      <Image
-        src={project.data.image}
-        alt={project.data.title}
-        width={1200}
-        height={675}
-        format="webp"
-        quality={80}
-        class="w-full h-full object-cover"
-      />
+      {heroImage ? (
+        <Image
+          src={heroImage}
+          alt={project.data.title}
+          width={1200}
+          height={675}
+          format="webp"
+          quality={80}
+          class="w-full h-full object-cover"
+        />
+      ) : (
+        <img
+          src={project.data.image}
+          alt={project.data.title}
+          width="1200"
+          height="675"
+          class="w-full h-full object-cover"
+        />
+      )}
     </div>
 
     <!-- Content -->
@@ -106,22 +118,38 @@ const formattedDate = project.data.date.toLocaleDateString("pl-PL", {
         <div>
           <h2 class="text-lg font-semibold text-primary mb-4">Galeria zdjęć</h2>
           <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-            {project.data.gallery.map((img, index) => (
-              <button
-                type="button"
-                class="gallery-thumb aspect-video overflow-hidden rounded-lg border border-white/10 hover:border-primary transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
-                data-index={index}
-                data-src={img}
-                aria-label={`Otwórz zdjęcie ${index + 1} z galerii`}
-              >
-                <img
-                  src={img}
-                  alt={`${project.data.title} - zdjęcie ${index + 1}`}
-                  class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-                  loading="lazy"
-                />
-              </button>
-            ))}
+            {project.data.gallery.map((img, index) => {
+              const resolved = resolveProjectImage(img);
+              return (
+                <button
+                  type="button"
+                  class="gallery-thumb aspect-video overflow-hidden rounded-lg border border-white/10 hover:border-primary transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary"
+                  data-index={index}
+                  data-src={resolved ? resolved.src : img}
+                  aria-label={`Otwórz zdjęcie ${index + 1} z galerii`}
+                >
+                  {resolved ? (
+                    <Image
+                      src={resolved}
+                      alt={`${project.data.title} - zdjęcie ${index + 1}`}
+                      width={400}
+                      height={225}
+                      format="webp"
+                      quality={75}
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  ) : (
+                    <img
+                      src={img}
+                      alt={`${project.data.title} - zdjęcie ${index + 1}`}
+                      class="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}

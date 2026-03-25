@@ -10,5 +10,6 @@ export const SITE_CONFIG = {
   author: {
     name: "Marcin Gromek",
     linkedin: "https://www.linkedin.com/in/gromekmarcin/",
+    portfolio: "https://gromek.dev/",
   },
 };

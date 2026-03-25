@@ -12,7 +12,7 @@ collections:
     label: "Realizacje"
     label_singular: "Realizacja"
     folder: "src/content/projects"
-    media_folder: "public/images/projects"
+    media_folder: "src/assets/images/projects"
     public_folder: "/images/projects"
     preview_path: "projekty/{{slug}}"
     create: true

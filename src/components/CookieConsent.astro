@@ -1,0 +1,181 @@
+---
+---
+
+<div
+  id="cookie-consent-bar"
+  role="region"
+  aria-label="Zgoda na pliki cookie"
+  class="cookie-bar fixed bottom-0 left-0 right-0 z-50 p-4 md:bottom-4 md:left-1/2 md:-translate-x-1/2 md:max-w-lg md:rounded-xl shadow-lg"
+  style="display: none;"
+>
+  <p class="text-sm mb-3">
+    Ta strona używa plików cookie w celach analitycznych.
+    <a href="/polityka-prywatnosci" class="underline hover:text-primary ml-1">
+      Polityka prywatności
+    </a>
+  </p>
+  <div class="flex gap-3" role="group" aria-label="Opcje cookie">
+    <button
+      id="cookie-accept"
+      class="rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-dark cursor-pointer hover:bg-accent transition-colors"
+    >
+      Akceptuj
+    </button>
+    <button
+      id="cookie-reject"
+      class="cookie-btn-reject rounded-lg px-4 py-2 text-sm font-semibold cursor-pointer transition-colors"
+    >
+      Odrzuć
+    </button>
+  </div>
+</div>
+
+<style>
+  /* Inverted: dark theme → light bar, light theme → dark bar */
+  .cookie-bar {
+    background: #ffffff;
+    color: #0f0f0f;
+    will-change: transform;
+
+    &.slide-in {
+      animation: slideUpFadeIn 0.4s ease-out forwards;
+    }
+
+    &.slide-out {
+      animation: slideDownFadeOut 0.3s ease-in forwards;
+    }
+  }
+
+  .cookie-btn-reject {
+    background: transparent;
+    border: 1px solid color-mix(in srgb, #0f0f0f 20%, transparent);
+    color: #0f0f0f;
+
+    &:hover {
+      background: color-mix(in srgb, #0f0f0f 5%, transparent);
+    }
+  }
+
+  html.light {
+    & .cookie-bar {
+      background: #0f0f0f;
+      color: #ffffff;
+    }
+
+    & .cookie-btn-reject {
+      border-color: color-mix(in srgb, #ffffff 20%, transparent);
+      color: #ffffff;
+
+      &:hover {
+        background: color-mix(in srgb, #ffffff 5%, transparent);
+      }
+    }
+  }
+
+  @keyframes slideUpFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideDownFadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var GA_ID = "G-CSSC8FS83R";
+
+    function loadGA() {
+      if (document.querySelector('script[src*="googletagmanager"]')) return;
+
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(s);
+
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      window.gtag = gtag;
+      gtag("js", new Date());
+      gtag("config", GA_ID);
+    }
+
+    function showBar(bar) {
+      bar.style.display = "block";
+      requestAnimationFrame(function () {
+        bar.classList.add("slide-in");
+      });
+    }
+
+    function hideBar(bar) {
+      bar.classList.remove("slide-in");
+      bar.classList.add("slide-out");
+      bar.addEventListener(
+        "animationend",
+        function () {
+          bar.style.display = "none";
+          bar.classList.remove("slide-out");
+        },
+        { once: true }
+      );
+    }
+
+    function init() {
+      var consent = localStorage.getItem("cookie-consent");
+
+      if (consent === "accepted") {
+        loadGA();
+        return;
+      }
+
+      if (consent === "rejected") {
+        return;
+      }
+
+      var bar = document.getElementById("cookie-consent-bar");
+      if (!bar) return;
+
+      showBar(bar);
+
+      var acceptBtn = document.getElementById("cookie-accept");
+      var rejectBtn = document.getElementById("cookie-reject");
+
+      if (acceptBtn) {
+        acceptBtn.addEventListener("click", function () {
+          localStorage.setItem("cookie-consent", "accepted");
+          loadGA();
+          hideBar(bar);
+        });
+      }
+
+      if (rejectBtn) {
+        rejectBtn.addEventListener("click", function () {
+          localStorage.setItem("cookie-consent", "rejected");
+          hideBar(bar);
+        });
+      }
+    }
+
+    if ("requestIdleCallback" in window) {
+      requestIdleCallback(init);
+    } else {
+      setTimeout(init, 2000);
+    }
+  })();
+</script>

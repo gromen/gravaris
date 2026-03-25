@@ -1,5 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import { getCollection } from "astro:content";
+import { resolveProjectImage } from "@/lib/resolve-image";
 
 const projects = (await getCollection("projects")).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf(),
@@ -52,11 +54,25 @@ const projects = (await getCollection("projects")).sort(
               data-project-name={project.data.title}
               data-project-slug={project.id}
             >
-              <img
-                src={project.data.image}
-                alt={project.data.title}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
+              {resolveProjectImage(project.data.image) ? (
+                <Image
+                  src={resolveProjectImage(project.data.image)!}
+                  alt={project.data.title}
+                  width={600}
+                  height={338}
+                  format="webp"
+                  quality={75}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              ) : (
+                <img
+                  src={project.data.image}
+                  alt={project.data.title}
+                  class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              )}
 
               <div class="absolute bottom-0 left-0 right-0 bg-black/80 p-3 transform translate-y-0 text-center border-t border-primary/50">
                 <span class="text-sm font-semibold text-white group-hover:text-primary transition-colors">

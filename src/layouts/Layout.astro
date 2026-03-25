@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import CookieConsent from "../components/CookieConsent.astro";
 import "../styles/global.css";
 
 interface Props {
@@ -36,16 +37,6 @@ const {
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
     ></script>
 
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CSSC8FS83R"
-    ></script>
-    <script is:inline>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-CSSC8FS83R');
-    </script>
-
     <!-- Theme init (prevents flash) -->
     <script is:inline>
       (function () {
@@ -79,5 +70,6 @@ const {
         });
       }
     </script>
+    <CookieConsent />
   </body>
 </html>
