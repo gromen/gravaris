@@ -1,6 +1,6 @@
 ---
-title: "Budowa stawu - Sowia Wola"
-description: "Budowa dużego stawu w Sowiej Woli — jedna z największych realizacji firmy Gravaris. Kompleksowe prace ziemne na szeroką skalę."
+title: "Budowa dużego stawu"
+description: "Budowa dużego stawu — jedna z największych realizacji firmy Gravaris. Kompleksowe prace ziemne na szeroką skalę."
 image: /images/projects/staw-sowia-wola/staw-sowia-wola-01.jpeg
 date: 2025-09-12
 gallery:
@@ -43,4 +43,4 @@ gallery:
   - /images/projects/staw-sowia-wola/staw-sowia-wola-37.jpeg
 ---
 
-Jedna z największych realizacji firmy Gravaris — budowa dużego stawu w Sowiej Woli. Prace ziemne obejmowały wykopanie obszernego zbiornika wodnego, profilowanie brzegów i skarp oraz formowanie dna na znacznej powierzchni. Projekt wymagał zaangażowania ciężkiego sprzętu i precyzyjnego planowania robót ziemnych.
+Jedna z największych realizacji firmy Gravaris — budowa dużego stawu. Prace ziemne obejmowały wykopanie obszernego zbiornika wodnego, profilowanie brzegów i skarp oraz formowanie dna na znacznej powierzchni. Projekt wymagał zaangażowania ciężkiego sprzętu i precyzyjnego planowania robót ziemnych.

@@ -1,6 +1,6 @@
 ---
-title: "Budowa stawu - Długie"
-description: "Budowa stawu w miejscowości Długie. Profesjonalne prace ziemne obejmujące wykopanie zbiornika wodnego oraz ukształtowanie terenu."
+title: "Budowa stawu"
+description: "Budowa stawu. Profesjonalne prace ziemne obejmujące wykopanie zbiornika wodnego oraz ukształtowanie terenu."
 image: /images/projects/staw-dlugie/staw-dlugie-01.jpeg
 date: 2025-05-20
 gallery:
@@ -14,4 +14,4 @@ gallery:
   - /images/projects/staw-dlugie/staw-dlugie-08.jpeg
 ---
 
-Realizacja projektu budowy stawu w Długie obejmowała kopanie zbiornika wodnego, profilowanie skarp oraz wyrównywanie dna. Firma Gravaris przeprowadziła prace z zachowaniem najwyższych standardów, zapewniając odpowiednie ukształtowanie terenu wokół zbiornika.
+Realizacja projektu budowy stawu obejmowała kopanie zbiornika wodnego, profilowanie skarp oraz wyrównywanie dna. Firma Gravaris przeprowadziła prace z zachowaniem najwyższych standardów, zapewniając odpowiednie ukształtowanie terenu wokół zbiornika.

@@ -1,6 +1,6 @@
 ---
-title: "Budowa stawu - Wola Rasztowska"
-description: "Realizacja budowy stawu rekreacyjnego w miejscowości Wola Rasztowska. Kompleksowe prace ziemne obejmujące wykop, formowanie brzegów oraz zagospodarowanie terenu wokół zbiornika."
+title: "Budowa stawu rekreacyjnego"
+description: "Realizacja budowy stawu rekreacyjnego. Kompleksowe prace ziemne obejmujące wykop, formowanie brzegów oraz zagospodarowanie terenu wokół zbiornika."
 image: /images/projects/staw-wola-rasztowska/staw-wola-rasztowska-01.jpeg
 date: 2025-03-25
 gallery:
@@ -20,4 +20,4 @@ gallery:
   - /images/projects/staw-wola-rasztowska/staw-wola-rasztowska-14.jpeg
 ---
 
-Firma Gravaris zrealizowała budowę stawu rekreacyjnego w Woli Rasztowskiej. Prace obejmowały kopanie zbiornika wodnego, profilowanie skarp oraz formowanie linii brzegowej. Teren wokół stawu został wyrównany i przygotowany do dalszego zagospodarowania.
+Firma Gravaris zrealizowała budowę stawu rekreacyjnego. Prace obejmowały kopanie zbiornika wodnego, profilowanie skarp oraz formowanie linii brzegowej. Teren wokół stawu został wyrównany i przygotowany do dalszego zagospodarowania.

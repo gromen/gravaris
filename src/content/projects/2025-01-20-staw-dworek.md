@@ -1,6 +1,6 @@
 ---
-title: "Budowa stawu - Dworek"
-description: "Realizacja budowy stawu w miejscowości Dworek. Wykop zbiornika wodnego wraz z ukształtowaniem skarp i otoczenia."
+title: "Budowa stawu"
+description: "Realizacja budowy stawu. Wykop zbiornika wodnego wraz z ukształtowaniem skarp i otoczenia."
 image: /images/projects/staw-dworek/staw-dworek-01.jpeg
 date: 2025-01-20
 gallery:
@@ -11,4 +11,4 @@ gallery:
   - /images/projects/staw-dworek/staw-dworek-05.jpeg
 ---
 
-Firma Gravaris wykonała budowę stawu w miejscowości Dworek. Prace obejmowały kopanie zbiornika wodnego, profilowanie skarp oraz wyrównanie terenu wokół stawu. Całość została zrealizowana z zachowaniem naturalnego charakteru otoczenia.
+Firma Gravaris wykonała budowę stawu. Prace obejmowały kopanie zbiornika wodnego, profilowanie skarp oraz wyrównanie terenu wokół stawu. Całość została zrealizowana z zachowaniem naturalnego charakteru otoczenia.

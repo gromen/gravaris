@@ -1,6 +1,6 @@
 ---
-title: "Budowa stawu - Grabownica"
-description: "Budowa stawu w Grabownicy. Prace ziemne obejmujące wykopanie zbiornika, formowanie dna i profilowanie brzegów."
+title: "Budowa stawu"
+description: "Budowa stawu. Prace ziemne obejmujące wykopanie zbiornika, formowanie dna i profilowanie brzegów."
 image: /images/projects/staw-grabownica/staw-grabownica-01.jpeg
 date: 2025-07-10
 gallery:
@@ -15,4 +15,4 @@ gallery:
   - /images/projects/staw-grabownica/staw-grabownica-09.jpeg
 ---
 
-Projekt budowy stawu w Grabownicy zrealizowany przez firmę Gravaris. Prace obejmowały kopanie stawu, formowanie dna zbiornika oraz profilowanie brzegów. Teren wokół stawu został odpowiednio ukształtowany i przygotowany do dalszego zagospodarowania.
+Projekt budowy stawu zrealizowany przez firmę Gravaris. Prace obejmowały kopanie stawu, formowanie dna zbiornika oraz profilowanie brzegów. Teren wokół stawu został odpowiednio ukształtowany i przygotowany do dalszego zagospodarowania.

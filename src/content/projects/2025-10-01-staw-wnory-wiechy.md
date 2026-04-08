@@ -1,6 +1,6 @@
 ---
-title: "Budowa stawu - Wnory Wiechy"
-description: "Budowa stawu w miejscowości Wnory Wiechy. Rozległy projekt obejmujący kompleksowe prace ziemne i kształtowanie terenu."
+title: "Budowa stawu"
+description: "Budowa stawu. Rozległy projekt obejmujący kompleksowe prace ziemne i kształtowanie terenu."
 image: /images/projects/staw-wnory-wiechy/staw-wnory-wiechy-01.jpeg
 date: 2025-10-01
 gallery:
@@ -30,4 +30,4 @@ gallery:
   - /images/projects/staw-wnory-wiechy/staw-wnory-wiechy-24.jpeg
 ---
 
-Budowa stawu w Wnory Wiechy zrealizowana przez firmę Gravaris. Rozległy projekt obejmował kopanie zbiornika wodnego, profilowanie skarp i brzegów oraz formowanie dna. Prace ziemne wymagały precyzyjnego kształtowania terenu na dużej powierzchni z zastosowaniem specjalistycznego sprzętu.
+Budowa stawu zrealizowana przez firmę Gravaris. Rozległy projekt obejmował kopanie zbiornika wodnego, profilowanie skarp i brzegów oraz formowanie dna. Prace ziemne wymagały precyzyjnego kształtowania terenu na dużej powierzchni z zastosowaniem specjalistycznego sprzętu.

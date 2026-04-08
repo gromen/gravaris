@@ -1,6 +1,6 @@
 ---
-title: "Zagospodarowanie terenu - Grabownica"
-description: "Kompleksowe zagospodarowanie i niwelacja terenu w Grabownicy. Wyrównanie działki oraz przygotowanie gruntu pod dalszą zabudowę."
+title: "Zagospodarowanie terenu"
+description: "Kompleksowe zagospodarowanie i niwelacja terenu. Wyrównanie działki oraz przygotowanie gruntu pod dalszą zabudowę."
 image: /images/projects/zagospodarowanie-terenu-grabownica/zagospodarowanie-terenu-grabownica-01.jpeg
 date: 2025-08-20
 gallery:
@@ -14,4 +14,4 @@ gallery:
   - /images/projects/zagospodarowanie-terenu-grabownica/zagospodarowanie-terenu-grabownica-08.jpeg
 ---
 
-Gravaris zrealizował prace związane z zagospodarowaniem terenu w Grabownicy. Zakres obejmował niwelację terenu, wyrównanie działki oraz przemieszczenie mas ziemnych. Teren został przygotowany pod dalsze inwestycje zgodnie z wytycznymi inwestora.
+Gravaris zrealizował prace związane z zagospodarowaniem terenu. Zakres obejmował niwelację terenu, wyrównanie działki oraz przemieszczenie mas ziemnych. Teren został przygotowany pod dalsze inwestycje zgodnie z wytycznymi inwestora.
